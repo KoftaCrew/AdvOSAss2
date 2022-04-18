@@ -9,7 +9,7 @@ public class Main {
         //TODO
         int[] queue = new int[]{98, 183, 37, 122, 14, 124, 65, 67};
         initialPosition = 53;
-        System.out.println(Arrays.toString(CSCAN(queue)));
+        System.out.println(Arrays.toString(CLOOK(queue)));
 	// write your code here
     }
 
@@ -87,7 +87,46 @@ public class Main {
         return res;
     }
 
+    public static int[] LOOK(int[] q){
+        int[] res = new int[q.length];
+        int currentIndex = 0;
+        Arrays.sort(q);
+        for (int i : q){
+            if (i > initialPosition){
+                break;
+            }
+            currentIndex++;
+        }
+        int j = 0;
+        for (int i = currentIndex; i < q.length && j < res.length; i++){
+            res[j++] = q[i];
+        }
+        j = q.length - 1;
+        for (int i = 0; i < q.length && i < currentIndex; i++){
+            res[j--] = q[i];
+        }
+        return res;
+    }
 
+    public static int[] CLOOK(int[] q){
+        int[] res = new int[q.length];
+        int currentIndex = 0;
+        Arrays.sort(q);
+        for (int i : q){
+            if (i > initialPosition){
+                break;
+            }
+            currentIndex++;
+        }
+        int j = 0;
+        for (int i = currentIndex; i < q.length && j < res.length; i++){
+            res[j++] = q[i];
+        }
+        for (int i = 0; i < q.length && i < currentIndex; i++){
+            res[j++] = q[i];
+        }
+        return res;
+    }
 
 }
 
