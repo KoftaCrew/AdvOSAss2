@@ -3,13 +3,11 @@ package algorithms;
 import java.util.Arrays;
 
 public class Algorithms {
-    public static final int MAX_INDEX = 200;
-
-    public static int[] FCFS(int[] queue, int initialPosition){
+    public static int[] FCFS(int[] queue, int initialPosition, int cylinders){
         return queue;
     }
 
-    public static int[] SSTF(int[] q, int initialPosition){
+    public static int[] SSTF(int[] q, int initialPosition, int cylinders){
         int[] res = new int[q.length];
         int currentPosition = initialPosition;
         for (int i = 0; i < q.length; i++){
@@ -31,7 +29,7 @@ public class Algorithms {
         return res;
     }
 
-    public static int[] SCAN(int[] q, int initialPosition){
+    public static int[] SCAN(int[] q, int initialPosition, int cylinders){
         int[] res = new int[q.length + 2];
         int currentIndex = 0;
         Arrays.sort(q);
@@ -45,7 +43,7 @@ public class Algorithms {
         for (int i = currentIndex; i < q.length && j < res.length; i++){
             res[j++] = q[i];
         }
-        res[j++] = MAX_INDEX;
+        res[j++] = cylinders;
         j = res.length - 1;
         res[j--] = 0;
         for (int i = 0; i < q.length && i < currentIndex; i++){
@@ -54,8 +52,8 @@ public class Algorithms {
         return res;
     }
 
-    public static int[] CSCAN(int[] q, int initialPosition){
-        int[] res = new int[q.length + 1];
+    public static int[] CSCAN(int[] q, int initialPosition, int cylinders){
+        int[] res = new int[q.length + 2];
         int currentIndex = 0;
         Arrays.sort(q);
         for (int i : q){
@@ -68,6 +66,7 @@ public class Algorithms {
         for (int i = currentIndex; i < q.length && j < res.length; i++){
             res[j++] = q[i];
         }
+        res[j++] = cylinders;
         res[j++] = 0;
         for (int i = 0; i < q.length && i < currentIndex; i++){
             res[j++] = q[i];
@@ -75,7 +74,7 @@ public class Algorithms {
         return res;
     }
 
-    public static int[] LOOK(int[] q, int initialPosition){
+    public static int[] LOOK(int[] q, int initialPosition, int cylinders){
         int[] res = new int[q.length];
         int currentIndex = 0;
         Arrays.sort(q);
@@ -96,7 +95,7 @@ public class Algorithms {
         return res;
     }
 
-    public static int[] CLOOK(int[] q, int initialPosition){
+    public static int[] CLOOK(int[] q, int initialPosition, int cylinders){
         int[] res = new int[q.length];
         int currentIndex = 0;
         Arrays.sort(q);
