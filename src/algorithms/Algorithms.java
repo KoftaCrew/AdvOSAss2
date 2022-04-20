@@ -1,27 +1,15 @@
+package algorithms;
+
 import java.util.Arrays;
 
-public class Main {
-
-    public static int initialPosition;
+public class Algorithms {
     public static final int MAX_INDEX = 200;
 
-    public static void main(String[] args) {
-        //TODO
-        int[] queue = new int[]{98, 183, 37, 122, 14, 124, 65, 67};
-        initialPosition = 53;
-        System.out.println(Arrays.toString(CLOOK(queue)));
-	// write your code here
-    }
-
-    public static void printStats(int[] order, int startIndex){
-        //TODO
-    }
-
-    public static int[] FCFS(int[] queue){
+    public static int[] FCFS(int[] queue, int initialPosition){
         return queue;
     }
 
-    public static int[] SSTF(int[] q){
+    public static int[] SSTF(int[] q, int initialPosition){
         int[] res = new int[q.length];
         int currentPosition = initialPosition;
         for (int i = 0; i < q.length; i++){
@@ -43,7 +31,7 @@ public class Main {
         return res;
     }
 
-    public static int[] SCAN(int[] q){
+    public static int[] SCAN(int[] q, int initialPosition){
         int[] res = new int[q.length + 2];
         int currentIndex = 0;
         Arrays.sort(q);
@@ -66,7 +54,7 @@ public class Main {
         return res;
     }
 
-    public static int[] CSCAN(int[] q){
+    public static int[] CSCAN(int[] q, int initialPosition){
         int[] res = new int[q.length + 1];
         int currentIndex = 0;
         Arrays.sort(q);
@@ -87,7 +75,7 @@ public class Main {
         return res;
     }
 
-    public static int[] LOOK(int[] q){
+    public static int[] LOOK(int[] q, int initialPosition){
         int[] res = new int[q.length];
         int currentIndex = 0;
         Arrays.sort(q);
@@ -108,7 +96,7 @@ public class Main {
         return res;
     }
 
-    public static int[] CLOOK(int[] q){
+    public static int[] CLOOK(int[] q, int initialPosition){
         int[] res = new int[q.length];
         int currentIndex = 0;
         Arrays.sort(q);
