@@ -1,5 +1,7 @@
 package algorithms;
 
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Algorithms {
@@ -30,7 +32,7 @@ public class Algorithms {
     }
 
     public static int[] SCAN(int[] q, int initialPosition, int cylinders){
-        int[] res = new int[q.length + 2];
+        ArrayList<Integer> res = new ArrayList<Integer>();
         int currentIndex = 0;
         Arrays.sort(q);
         for (int i : q){
@@ -39,21 +41,20 @@ public class Algorithms {
             }
             currentIndex++;
         }
-        int j = 0;
-        for (int i = currentIndex; i < q.length && j < res.length; i++){
-            res[j++] = q[i];
+
+        for (int i = currentIndex; i < q.length; i++) res.add(q[i]);
+        if (currentIndex != 0 && currentIndex != q.length) res.add(cylinders);
+        for (int i = currentIndex - 1; i >= 0; i--) res.add(q[i]);
+
+        int[] ret = new int[res.size()];
+        for (int i = 0; i < res.size(); i++){
+            ret[i] = res.get(i);
         }
-        res[j++] = cylinders;
-        j = res.length - 1;
-        res[j--] = 0;
-        for (int i = 0; i < q.length && i < currentIndex; i++){
-            res[j--] = q[i];
-        }
-        return res;
+        return ret;
     }
 
     public static int[] CSCAN(int[] q, int initialPosition, int cylinders){
-        int[] res = new int[q.length + 2];
+        ArrayList<Integer> res = new ArrayList<Integer>();
         int currentIndex = 0;
         Arrays.sort(q);
         for (int i : q){
@@ -62,20 +63,30 @@ public class Algorithms {
             }
             currentIndex++;
         }
-        int j = 0;
-        for (int i = currentIndex; i < q.length && j < res.length; i++){
-            res[j++] = q[i];
+        int j = currentIndex + 1;
+        if (currentIndex != q.length) res.add(q[currentIndex]);
+        else {
+            currentIndex = q.length - 1;
+            res.add(0);
         }
-        res[j++] = cylinders;
-        res[j++] = 0;
-        for (int i = 0; i < q.length && i < currentIndex; i++){
-            res[j++] = q[i];
+        while (j % q.length != currentIndex){
+            int i = j % q.length;
+            if (i == 0) {
+                res.add(cylinders);
+                res.add(0);
+            }
+            j++;
+            res.add(q[i]);
         }
-        return res;
+        int[] ret = new int[res.size()];
+        for (int i = 0; i < res.size(); i++){
+            ret[i] = res.get(i);
+        }
+        return ret;
     }
 
     public static int[] LOOK(int[] q, int initialPosition, int cylinders){
-        int[] res = new int[q.length];
+        ArrayList<Integer> res = new ArrayList<Integer>();
         int currentIndex = 0;
         Arrays.sort(q);
         for (int i : q){
@@ -84,37 +95,44 @@ public class Algorithms {
             }
             currentIndex++;
         }
-        int j = 0;
-        for (int i = currentIndex; i < q.length && j < res.length; i++){
-            res[j++] = q[i];
+
+        for (int i = currentIndex; i < q.length; i++) res.add(q[i]);
+        for (int i = currentIndex - 1; i >= 0; i--) res.add(q[i]);
+
+        int[] ret = new int[res.size()];
+        for (int i = 0; i < res.size(); i++){
+            ret[i] = res.get(i);
         }
-        j = q.length - 1;
-        for (int i = 0; i < q.length && i < currentIndex; i++){
-            res[j--] = q[i];
-        }
-        return res;
+        return ret;
     }
 
-    public static int[] CLOOK(int[] q, int initialPosition, int cylinders){
-        int[] res = new int[q.length];
+    public static int[] CLOOK(int[] q, int initialPosition, int cylinders) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
         int currentIndex = 0;
         Arrays.sort(q);
-        for (int i : q){
-            if (i > initialPosition){
+        for (int i : q) {
+            if (i > initialPosition) {
                 break;
             }
             currentIndex++;
         }
-        int j = 0;
-        for (int i = currentIndex; i < q.length && j < res.length; i++){
-            res[j++] = q[i];
+        int j = currentIndex + 1;
+        if (currentIndex != q.length) res.add(q[currentIndex]);
+        else {
+            currentIndex = q.length - 1;
+            j = 0;
         }
-        for (int i = 0; i < q.length && i < currentIndex; i++){
-            res[j++] = q[i];
+        while (j % q.length != currentIndex) {
+            int i = j % q.length;
+            j++;
+            res.add(q[i]);
         }
-        return res;
+        int[] ret = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            ret[i] = res.get(i);
+        }
+        return ret;
     }
-
 }
 
 
