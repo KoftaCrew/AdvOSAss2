@@ -61,7 +61,7 @@ public class GUIMain {
                         visualizer.setQueue(Algorithms.CLOOK(q, initial, cylindres));
                         break;
                     case 6:
-                        //visualizer.setQueue(Algorithms.FCFS(q, initial, cylindres));
+                        visualizer.setQueue(Algorithms.newOptimizedAlgorithm(q, initial, cylindres));
                         break;
                 }
 

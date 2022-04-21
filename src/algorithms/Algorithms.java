@@ -133,6 +133,20 @@ public class Algorithms {
         }
         return ret;
     }
+
+    public static int[] newOptimizedAlgorithm(int[] q, int initialPosition, int cylinders) {
+        int []tmp = Arrays.copyOf(q, q.length);
+        int []ret = new int[q.length + 1];
+        Arrays.sort(tmp);
+        ret[0] = 0;
+        int head = 0;
+        for (int i = 0; i < q.length; ++i) {
+            // service the track of tmp[i]
+            ret[i + 1] = tmp[i];
+            head = tmp[i];
+        }
+        return ret;
+    }
 }
 
 
