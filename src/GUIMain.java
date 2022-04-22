@@ -1,6 +1,7 @@
-package gui;
-
-import algorithms.Algorithms;
+// Kareem Mohamed Morsy Ismail       , ID: 20190386, Group: CS-S3, Program: CS
+// David Emad Philip Ata-Allah       , ID: 20190191, Group: CS-S3, Program: CS
+// Mostafa Mahmoud Anwar Morsy Sadek , ID: 20190544, Group: CS-S3, Program: CS
+// Mohamed Ashraf Mohamed Ali        , ID: 20190424, Group: CS-S3, Program: CS
 
 import javax.swing.*;
 import java.awt.*;
