@@ -80,7 +80,7 @@ public class GUIMain {
     public static void main(String[] args) throws Exception {
         UIManager.setLookAndFeel(
                 UIManager.getSystemLookAndFeelClassName());
-        JFrame frame = new JFrame("CPU Scheduler");
+        JFrame frame = new JFrame("Disk Scheduler");
         frame.setContentPane(new GUIMain().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(680, 680));
